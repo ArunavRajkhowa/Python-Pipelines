@@ -39,7 +39,6 @@ class custom_fico(BaseEstimator,TransformerMixin):
     def transform(self,X):
 
         k=X['FICO.Range'].str.split('-',expand=True).astype(float)
-        
         fico=0.5*(k[0]+k[1])
         return pd.DataFrame({'fico':fico})
 
@@ -127,6 +126,8 @@ class get_dummies_Pipe(BaseEstimator, TransformerMixin):
 
         return self
 
+
+
     def transform(self,x,y=None):
         dummy_data=x.copy()
 
@@ -139,9 +140,12 @@ class get_dummies_Pipe(BaseEstimator, TransformerMixin):
 
         return dummy_data
 
+
     def get_feature_names(self):
 
         return self.feature_names
+    
+    
 
 class DataFrameImputer(BaseEstimator,TransformerMixin):
 
@@ -167,6 +171,8 @@ class DataFrameImputer(BaseEstimator,TransformerMixin):
     def get_feature_names(self):
 
         return self.feature_names
+    
+    
 
 class pdPipeline(Pipeline):
 
